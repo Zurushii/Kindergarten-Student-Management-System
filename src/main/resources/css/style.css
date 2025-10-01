@@ -1,0 +1,115 @@
+/* ========== GENERAL LAYOUT ========== */
+.root {
+    -fx-font-family: "Comic Sans MS", "Arial Rounded MT Bold", sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #fff9f0, #ffeaa7);
+}
+
+/* Add header bar style */
+.header-bar {
+    -fx-background-color: linear-gradient(to right, #fd79a8, #fab1a0);
+    -fx-padding: 15;
+    -fx-alignment: center;
+    -fx-border-color: #e17055;
+    -fx-border-width: 0 0 3 0;
+}
+
+.header-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3436;
+}
+
+/* ========== LABELS ========== */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #2d3436;
+    -fx-font-weight: bold;
+}
+
+/* ========== TEXTFIELDS & TEXTAREA ========== */
+.text-field, .text-area, .date-picker {
+    -fx-background-radius: 10;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #fab1a0;
+    -fx-border-radius: 10;
+    -fx-padding: 5;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .text-area:focused, .date-picker:focused {
+    -fx-border-color: #fd79a8;
+    -fx-border-width: 2;
+}
+
+/* ========== BUTTONS ========== */
+.button {
+    -fx-background-radius: 20;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+}
+
+#btnAdd {
+    -fx-background-color: #55efc4; /* greenish */
+}
+#btnUpdate {
+    -fx-background-color: #74b9ff; /* light blue */
+}
+#btnDelete {
+    -fx-background-color: #ff7675; /* soft red */
+}
+#btnReset {
+    -fx-background-color: #fdcb6e; /* orange */
+}
+#btnSearch {
+    -fx-background-color: #a29bfe; /* purple */
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-opacity: 0.9;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* ========== TABLEVIEW ========== */
+.table-view {
+    -fx-background-color: #ffeaa7;
+    -fx-border-color: #fab1a0;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 3);
+}
+
+.table-view .column-header {
+    -fx-background-color: #fab1a0;
+    -fx-text-fill: #2d3436;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Alternate row colors */
+.table-row-cell:odd {
+    -fx-background-color: #fffde7;
+}
+.table-row-cell:even {
+    -fx-background-color: #fdf6e3;
+}
+
+/* Highlight selected row */
+.table-row-cell:selected {
+    -fx-background-color: #74b9ff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Highlight invalid input */
+.input-error {
+    -fx-border-color: red;
+    -fx-border-width: 2;
+    -fx-background-color: #ffe6e6; /* light red background */
+}
+

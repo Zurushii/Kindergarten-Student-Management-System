@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.controller.StudentController"
+            prefWidth="1000" prefHeight="850"
+            stylesheets="/css/style.css">
+
+    <!-- ========== HEADER + FORM + SUMMARY ========== -->
+    <top>
+        <VBox spacing="10" prefWidth="1200">
+            <!-- Title Section -->
+            <HBox alignment="CENTER" styleClass="header-bar">
+                <Label text="🎓 Kindergarten Student Management System"
+                       styleClass="header-title"/>
+            </HBox>
+			<!-- ========== FORM + SUMMARY SECTION ========== -->
+			<HBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 15;">
+			    <!-- Left: Form -->
+				<GridPane hgap="20" vgap="8">
+				    <columnConstraints>
+				        <ColumnConstraints halignment="RIGHT" minWidth="80"/>
+				        <ColumnConstraints minWidth="220"/>
+				    </columnConstraints>
+				
+				    <!-- Row 0: Name -->
+					<Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+					<VBox spacing="2" GridPane.rowIndex="0" GridPane.columnIndex="1">
+					    <TextField fx:id="txtName" prefWidth="300" alignment="CENTER_LEFT"/>
+					    <Label fx:id="lblErrorName" textFill="red" style="-fx-font-size: 12; -fx-padding: 2 0 0 0;" 
+					           visible="false" managed="false" maxWidth="300" wrapText="true"/>
+					</VBox>
+					
+					<!-- Row 1: Birth Date -->
+					<Label text="Birth Date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+					<VBox spacing="2" GridPane.rowIndex="1" GridPane.columnIndex="1">
+					    <DatePicker fx:id="dateBirth"/>
+					    <Label fx:id="lblErrorBirth" textFill="red" style="-fx-font-size: 12; -fx-padding: 2 0 0 0;" 
+					           visible="false" managed="false" maxWidth="150" wrapText="true"/>
+					</VBox>
+				
+				    <!-- Row 2: Age -->
+				    <Label text="Age:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+				    <TextField fx:id="txtAge" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false" alignment="CENTER_LEFT" maxWidth="25"/>
+				
+				    <!-- Row 3: Gender -->
+					<Label text="Gender:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+					<VBox spacing="2" GridPane.rowIndex="3" GridPane.columnIndex="1">
+					    <ComboBox fx:id="cmbGender" promptText="Select Gender" prefWidth="150"/>
+					    <Label fx:id="lblErrorGender" textFill="red" style="-fx-font-size: 12; -fx-padding: 2 0 0 0;" 
+					           visible="false" managed="false" maxWidth="150" wrapText="true"/>
+					</VBox>
+					
+					<!-- Row 4: Address -->
+					<Label text="Address:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+					<VBox spacing="2" GridPane.rowIndex="4" GridPane.columnIndex="1">
+					    <TextArea fx:id="txtAddress" prefRowCount="2" prefWidth="400" prefHeight="80"/>
+					    <Label fx:id="lblErrorAddress" textFill="red" style="-fx-font-size: 12; -fx-padding: 2 0 0 0;" 
+					           visible="false" managed="false" maxWidth="300" wrapText="true"/>
+					</VBox>
+				
+				    <!-- Row 5: Allergy -->
+				    <Label text="Allergy:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+				    <TextField fx:id="txtAllergy" GridPane.rowIndex="5" GridPane.columnIndex="1" alignment="CENTER_LEFT"/>
+				</GridPane>
+			
+			   <!-- Right: Student Summary -->
+				<VBox spacing="10" alignment="TOP_CENTER"
+				      style="-fx-background-color: #ffeaa7; -fx-background-radius: 15; -fx-padding: 15;"
+				      translateX="150"
+				      VBox.vgrow="NEVER"
+				      prefHeight="200"
+				      maxHeight="200">
+				
+				    <Label text="📊 Student Summary"
+				           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2d3436;"/>
+				
+				    <Label fx:id="lblTotalStudents"
+				           text="Total Students: 0"
+				           style="-fx-text-fill: #d63031; -fx-font-weight: bold;"/>
+				
+				    <Label fx:id="lblGenderDistribution"
+				           text="Gender: -"
+				           style="-fx-text-fill: #0984e3; -fx-font-weight: bold;"/>
+				
+				    <Label fx:id="lblAgeGroups"
+				           text="Age Groups: -"
+				           style="-fx-text-fill: #0984e3; -fx-font-weight: bold;"/>
+				
+				    <Label fx:id="lblAllergyCount"
+				           text="Allergies Reported: 0"
+				           style="-fx-text-fill: #6c5ce7; -fx-font-weight: bold;"/>
+				
+				    <Label fx:id="lblNextBirthdays"
+				           text="Birthdays This Month: 0"
+				           style="-fx-text-fill: #00b894; -fx-font-weight: bold;"/>
+				
+				    <!-- Export Button -->
+				    <HBox alignment="CENTER">
+				        <Button text="📄 Export to PDF"
+				                fx:id="btnExportPDF"
+				                onAction="#handleExportPDF"
+				                style="-fx-background-color: #2d3436; -fx-text-fill: white; -fx-background-radius: 10;"/>
+				    </HBox>
+				</VBox>
+			</HBox>
+
+            <!-- Buttons Row -->
+            <HBox spacing="15" style="-fx-padding: 0 0 10 115;" alignment="CENTER_LEFT">
+                <Button text="➕ Add" fx:id="btnAdd" onAction="#handleAdd" prefWidth="120" styleClass="action-btn add-btn"/>
+                <Button text="📝 Update" fx:id="btnUpdate" onAction="#handleUpdate" prefWidth="120" styleClass="action-btn update-btn"/>
+                <Button text="❌ Delete" fx:id="btnDelete" onAction="#handleDelete" prefWidth="120" styleClass="action-btn delete-btn"/>
+                <Button text="🔄 Reset" fx:id="btnReset" onAction="#handleReset" prefWidth="120" styleClass="action-btn reset-btn"/>
+            </HBox>
+
+            <!-- Search + Filter Row -->
+            <HBox spacing="10" style="-fx-padding: 0 0 10 15;" alignment="CENTER_LEFT">
+                <Label text="Filter:" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="cmbFilterType" promptText="Select filter" prefWidth="150"/>
+                <TextField fx:id="txtFilterValue" promptText="Enter value..." prefWidth="220"/>
+                <Button text="Apply Filter" fx:id="btnApplyFilter" onAction="#handleApplyFilter"/>
+                <Button text="Clear Filter" fx:id="btnClearFilter" onAction="#handleClearFilter"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- ========== CENTER TABLEVIEW ========== -->
+    <center>
+        <TableView fx:id="tableStudents">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
+                <TableColumn fx:id="colBirth" text="Birth Date" prefWidth="120"/>
+                <TableColumn fx:id="colAge" text="Age" prefWidth="80"/>
+                <TableColumn fx:id="colGender" text="Gender" prefWidth="100"/>
+                <TableColumn fx:id="colAddress" text="Address" prefWidth="200"/>
+                <TableColumn fx:id="colAllergy" text="Allergy" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
